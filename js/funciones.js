@@ -52,7 +52,30 @@ function post_data(){
         $("#email").val("");
         $("#age").val("");
         get_data();
-    })
+    });
 }
 
+function put_data(){
+    let dataDb = {
+        id: $("#id").val(),
+        name:$("#name").val(),
+        email:$("#email").val(),
+        age:$("#age").val()
+    };
+    let dataJson = JSON.stringify(dataDb);
+    $.ajax({
+        url:"https://g54e18a710da042-kymjdtjzxutnpf0b.adb.sa-saopaulo-1.oraclecloudapps.com/ords/admin/ejemplo/ejemplo",
+        type:"PUT",
+        data:dataJson,
+        contentType: "application/json",
+        dataType:"JSON"
+    }).always(function(){
+        $("#get_resultados").empty();
+        $("#id").val("");
+        $("#name").val("");
+        $("#email").val("");
+        $("#age").val("");
+        get_data();
+    });
+}
 
